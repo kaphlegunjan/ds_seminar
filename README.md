@@ -1,4 +1,4 @@
 # ds_seminar
 Kafka and ksql demo
 
-Please see the attached presentation
+Please see the attached keynote presentation
