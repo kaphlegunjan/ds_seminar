@@ -1,7 +1,7 @@
 # ds_seminar
 Kafka and ksql demo
 
-Installation:
+### Installation:
 - Download confluent kafka bundled with KSQL. For this demo, I used confluent-5.2.1.
 
 - To start kafka run: /[path to confluent-kafka]/bin/confluent start
@@ -9,7 +9,9 @@ Installation:
 - To start ksql cmd line run: /[path to confluent kafka]/bin/ksql http://localhost:8088
 
 
-To add movieAbbr UDF to ksql server.
+
+
+### To add movieAbbr UDF to ksql server.
 - Download Java and Apache Maven. This demo was performed using Java 8 and Apache Maven 3.6.3
 
 - Build a jar using the ksql_udf java code or you can directly download jar from the ksql_udf/target folder
