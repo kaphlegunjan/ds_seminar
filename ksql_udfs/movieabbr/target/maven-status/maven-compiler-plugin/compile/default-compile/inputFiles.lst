@@ -1,1 +1,2 @@
-/Users/gunjan.kaphle/eclipse-workspace/movieabbr/src/main/java/ksql/test/test/udafs/MovieAbbreviation.java
+/Users/gunjan.kaphle/eclipse-workspace/movieabbr/src/main/java/com/ksql/udf/demo/MovieAbbreviation.java
+/Users/gunjan.kaphle/eclipse-workspace/movieabbr/src/main/java/com/ksql/udf/demo/Average.java

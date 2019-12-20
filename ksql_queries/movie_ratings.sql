@@ -8,11 +8,15 @@ CREATE TABLE MOVIES_TABLE
  isChristmasMovie BOOLEAN
 ) WITH (kafka_topic='movie', key='movieId', value_format='json');
 
+
 select * from MOVIES_TABLE;
+
 
 select * from MOVIES_TABLE where year > 2000;
 
+
 select * from MOVIES_TABLE where isChristmasMovie;
+
 
 CREATE STREAM RATINGS
 (
@@ -20,7 +24,9 @@ CREATE STREAM RATINGS
   rating INTEGER
 ) WITH (kafka_topic='ratings', value_format='JSON');
 
+
 SELECT * FROM RATINGS;
+
 
 SELECT MOVIES_TABLE.movieId AS movieId,
        MOVIES_TABLE.name,
@@ -29,6 +35,7 @@ SELECT MOVIES_TABLE.movieId AS movieId,
        RATINGS.rating
 FROM RATINGS
 JOIN MOVIES_TABLE ON MOVIES_TABLE.movieId = RATINGS.movieId;
+
 
 CREATE STREAM MOVIES_RATING AS
 SELECT MOVIES_TABLE.movieId AS movieId,
@@ -39,9 +46,13 @@ SELECT MOVIES_TABLE.movieId AS movieId,
 FROM RATINGS
 JOIN MOVIES_TABLE ON MOVIES_TABLE.movieId = RATINGS.movieId;
 
+
 DESCRIBE MOVIES_RATING;
 
+
 CREATE TABLE MOVIE_RATING_AVG AS SELECT name, SUM(RATING)/COUNT(*) AS avg_rating FROM MOVIES_RATING GROUP BY name;
+
+
 CREATE TABLE MOVIE_WINDOW_TUMB1 AS
 SELECT
 name,
@@ -53,20 +64,21 @@ FROM
 WINDOW TUMBLING (size 1 minute)
 GROUP BY name;
 
+
 SELECT
-TIMESTAMPTOSTRING(WindowStart, 'yyyy-MM-dd HH:mm:ss.SSS') as ts_s,
-TIMESTAMPTOSTRING(WindowEnd, 'yyyy-MM-dd HH:mm:ss.SSS') as ts_e,
-name,
-cnt
+    TIMESTAMPTOSTRING(WindowStart, 'yyyy-MM-dd HH:mm:ss.SSS') as ts_s,
+    TIMESTAMPTOSTRING(WindowEnd, 'yyyy-MM-dd HH:mm:ss.SSS') as ts_e,
+    name,
+    cnt
 from MOVIE_WINDOW_TUMB1;
 
 
 -- udf/udaf
 
 SELECT
-movieId,
-name,
-movieAbbr(name),
-year
+    movieId,
+    name,
+    movieAbbr(name),
+    year
 FROM
-Movies_table;
+    Movies_table;
