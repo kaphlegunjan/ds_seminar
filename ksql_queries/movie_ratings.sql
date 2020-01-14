@@ -82,3 +82,10 @@ SELECT
     year
 FROM
     Movies_table;
+
+SELECT
+    name,
+    minrating(rating)
+FROM
+    MOVIES_RATING
+GROUP BY name;
